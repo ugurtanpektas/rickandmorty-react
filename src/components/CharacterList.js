@@ -28,15 +28,30 @@ class CharacterList extends React.Component{
             )
         }else{
             html = (
-                <div>
-                    <h1>Characters</h1>
-                    {this.props.characterState.chaaracterList.map((character) => {
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 col-sm-12 col-xs-12">
+                            <h1 className="list-header">Rick and Morty Characters</h1>
+                        </div>
+                    </div>
+                    <div className="row">
+                    {this.props.characterState.characterList.map((character) => {
                         return(
-                            <div className="item" key={character.id}>
-                                <Link to={`/character/detail/${character.name}`}>{character.name}</Link>
+                            <div className="col-md-4 col-sm-3 col-xs-12" key={character.id}>
+                                <div className="character-item">
+                                    <Link to={`/character/detail/${character.id}`}>
+                                        <div className="character-image">
+                                            <img src={character.image}/>
+                                        </div>
+                                        <div className="character-info">
+                                            {character.name}
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
                         )
                     })}
+                    </div>
                 </div>
             )
         }

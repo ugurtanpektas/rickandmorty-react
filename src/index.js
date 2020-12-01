@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Route} from 'react-router';
+import {HashRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -7,6 +9,9 @@ import reportWebVitals from './reportWebVitals';
 import Reducers from './Reducers';
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './general.css';
 
 const store = createStore(Reducers);
 
