@@ -2,6 +2,15 @@ body{
     background-color: #333;
     color: #fff;
 }
+.return-home{
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color:#555;
+    font-weight: 600;
+}
 .list-header{
     background-color: #555;
     color: #ff9900;
@@ -10,6 +19,7 @@ body{
     margin: 10px 0;
     border-radius: 10px;
     margin-bottom: 20px;
+    font-size: 2em;
 }
 .character-item{
     width: 100%;
@@ -24,6 +34,7 @@ body{
 .character-item .character-image img{
     border-radius: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 .character-item a{
     color: #fff;

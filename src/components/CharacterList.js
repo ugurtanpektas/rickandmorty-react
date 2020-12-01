@@ -37,9 +37,9 @@ class CharacterList extends React.Component{
                     <div className="row">
                     {this.props.characterState.characterList.map((character) => {
                         return(
-                            <div className="col-md-4 col-sm-3 col-xs-12" key={character.id}>
+                            <div className="col-md-4 col-sm-6 col-xs-12" key={character.id}>
                                 <div className="character-item">
-                                    <Link to={`/character/detail/${character.id}`}>
+                                    <Link to={`/character/${character.id}`}>
                                         <div className="character-image">
                                             <img src={character.image}/>
                                         </div>
