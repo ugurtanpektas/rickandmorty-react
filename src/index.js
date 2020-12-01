@@ -4,10 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Reducers from './Reducers';
+import { createStore } from 'redux';
+import {Provider} from 'react-redux';
+
+const store = createStore(Reducers);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+        <HashRouter>
+            <Route exact path="/" component={App}></Route>
+        </HashRouter>
+    </Provider>,
   document.getElementById('root')
 );
 
