@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {characterAction} from './../actions/characterAction';
+import InfiniteLoader from 'react-infinite-loader';
 
 const apiUrl = 'https://rickandmortyapi.com/api/character';
 
 class CharacterList extends React.Component{
     
+    constructor() {
+        super();
+        this.state = {hideInfiniteScroll: false};
+    }
+
     componentDidMount(){
         this.getCharacters();
     }
@@ -17,6 +23,17 @@ class CharacterList extends React.Component{
         const getCharactersCall = await fetch(apiUrl);
         const response = await getCharactersCall.json();
         this.props.characterAction('GET_CHARACTERS',response);
+    }
+
+    infiniteLoad = async () =>{
+        if(this.props.characterState.characterListInfo.next){
+            const getCharactersCall = await fetch(this.props.characterState.characterListInfo.next);
+            const response = await getCharactersCall.json();
+            this.props.characterAction('GET_CHARACTERS',response);
+        }
+        else{
+            this.setState({hideInfiniteScroll:true});
+        }
     }
 
     render(){
@@ -58,6 +75,7 @@ class CharacterList extends React.Component{
         return(
             <div className="character-list-wrapper">
                 {html}
+                {!this.state.hideInfiniteScroll && <InfiniteLoader onVisited={ () => this.infiniteLoad() } />}
             </div>
         )
     }

@@ -9,7 +9,6 @@ const apiUrl = 'https://rickandmortyapi.com/api/character/';
 class CharacterDetail extends React.Component{
 
     componentDidMount(){
-        console.log('character detail mount');
         this.getCharacterDetail();
     }
     
