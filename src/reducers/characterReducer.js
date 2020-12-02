@@ -1,6 +1,6 @@
 const initialState = {
     characterList : [],
-    characterDetail : [],
+    characterDetail : false,
     loading:true
 };
 

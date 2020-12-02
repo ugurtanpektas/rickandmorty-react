@@ -2,13 +2,14 @@ import React from "react";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {characterAction} from './../actions/characterAction';
-import { Link } from 'react-router-dom';
+import EpisodeName from "./EpisodeName";
 
 const apiUrl = 'https://rickandmortyapi.com/api/character/';
 
 class CharacterDetail extends React.Component{
 
     componentDidMount(){
+        console.log('character detail mount');
         this.getCharacterDetail();
     }
     
@@ -26,22 +27,36 @@ class CharacterDetail extends React.Component{
                 <div className="loading"> Loading...</div>
             )
         }else{
-            html = (
-                <div>
-                    <h1>Character Detail</h1>
-                    {this.props.characterState.characterDetail.name}
-                </div>   
-            )
+            if(this.props.characterState.characterDetail){
+                html = (
+                    <div className="row">
+                        <div className="col-md-4 col-sm-4 col-xs-12">
+                            <img src={this.props.characterState.characterDetail.image} alt={this.props.characterState.characterDetail.name}/>
+                        </div>
+                        <div className="col-md-8 col-sm-8 col-xs-12">
+                            <h1>{this.props.characterState.characterDetail.name}</h1>
+                            <p>{this.props.characterState.characterDetail.status}</p>
+                            <h2>Last 5 Episodes</h2>
+                            {this.props.characterState.characterDetail.episode.reverse().slice(0, 5).map((episode) => {
+                                return(
+                                    <EpisodeName key={episode} episodeLink = {episode}></EpisodeName>
+                                )
+                            })}
+                        </div>    
+                    </div>   
+                )
+            }
         }
         return(
             <div className="character-detail-wrapper">
-                {html}
-                <div className="return-home" onClick={() => this.props.history.goBack()}>Return homepage</div>
+                <div className="container">
+                    {html}
+                    <div className="return-home" onClick={() => this.props.history.goBack()}>Return homepage</div>
+                </div>
             </div>
         )
     }
 }
-
 
 function mapStateToProps(state){
     return{

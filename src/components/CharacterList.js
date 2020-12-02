@@ -41,7 +41,7 @@ class CharacterList extends React.Component{
                                 <div className="character-item">
                                     <Link to={`/character/${character.id}`}>
                                         <div className="character-image">
-                                            <img src={character.image}/>
+                                            <img src={character.image} alt={character.name}/>
                                         </div>
                                         <div className="character-info">
                                             {character.name}
