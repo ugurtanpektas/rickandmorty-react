@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EpisodeName /> test 1`] = `
+<p>
+  
+</p>
+`;
+
+exports[`<EpisodeName /> test passed 1`] = `
+<p>
+  
+</p>
+`;
